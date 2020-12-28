@@ -1,0 +1,34 @@
+-- This is default table configuration for sql database
+-- Run/import this sql query
+-- **
+-- *IMPORTANT*
+-- All existing data will be deleted
+-- Make sure the database name is the same with '$database_name' initialized in config.php file, to avoid database error
+
+DROP DATABASE IF EXISTS waterqualitysystem;
+CREATE DATABASE waterqualitysystem;
+USE waterqualitysystem;
+
+CREATE TABLE user (
+userid int(11) NOT NULL AUTO_INCREMENT,
+fullname text NOT NULL,
+email text NOT NULL,
+username text NOT NULL,
+password text NOT NULL,
+PRIMARY KEY(userid)
+);
+
+CREATE TABLE sensors (
+idLine int(11) NOT NULL AUTO_INCREMENT,
+time text NOT NULL,
+temperature decimal(5) NOT NULL,
+turbidity decimal(5) NOT NULL,
+ph decimal(5,1) NOT NULL,
+PRIMARY KEY(idLine)
+);
+
+-- Below is the default admins for fresh database created
+-- You can change or skip this
+INSERT INTO user (fullname,email,username,password) VALUES
+('Atif Mustaffa','atifmustaffa@gmail.com','admin','1122'),
+('Azfar Hamzah','azfarhamzah95@gmail.com','azfar','1122');
