@@ -10,7 +10,7 @@ or die('Cannot connect to the DB');
 
 mysqli_select_db($con, $database_name);
 
-mysqli_query($con,"INSERT INTO sensors (time,temperature,turbidity,ph)
+mysqli_query($con,"INSERT INTO reading (time,temperature,turbidity,ph)
   VALUES ('".$dt->format('H:i:s')."','".$_GET['temperature']."','".$_GET['turbidity']."','".$_GET['ph']."')");
 
 mysqli_close($con);

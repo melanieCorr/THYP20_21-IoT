@@ -16,16 +16,25 @@ $msg = "New registration needs your approval.<br>"
 ."<a href='".$host."register_user.php?".http_build_query($data)."'>Click here to approve</a><br>";
 
 // headers
-$headers = "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+// $headers = "MIME-Version: 1.0\r\n";
+// $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+$dest = "marouajellal788@gmail.com";
+$sujet = "Water Quality System User Registration";
+$message = $msg;
+$header = "From: $dest";
 
+/* test 1 */
+$envoi = mail($dest, $sujet, $message, $header);
 // use wordwrap() for lines no longer than 70 characters
 $msg = wordwrap($msg,80);
 echo $host."register_user.php?".http_build_query($data).PHP_EOL;
 
 // send email
-if($send_email) {
-    mail($admin_email,"Water Quality System User Registration",$msg,$headers);
+// if($send_email) {
+//     mail($admin_email,"Water Quality System User Registration",$msg,$headers);
+//     echo "Email sent";
+// }
+if( $envoi){
     echo "Email sent";
 }
 else {

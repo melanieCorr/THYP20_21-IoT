@@ -1,52 +1,57 @@
 body {
 	background-image: url('./aquacul.jpg');
 	background-repeat: repeat-y;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 100% 100%;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 100% 100%;
 
-    width: 60%;
-    margin: auto;
+	width: 60%;
+	margin: auto;
 
-    font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 #topnav {
 	margin-top: 20px;
 }
 
+a {
+	text-decoration: none;
+}
+
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    /*background-color: #ffffff;*/
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	/*background-color: #ffffff;*/
 }
 
 li {
-    float: left;
+	float: left;
 }
 
 li a {
-    display: block;
-    color: #414141;
-    text-align: center;
-    padding: 14px 16px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: large;
+	display: block;
+	color: #414141;
+	text-align: center;
+	padding: 14px 16px;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: large;
 }
 
-li a:hover, li.selected a {
-    color: #8F6B54;
+li a:hover,
+li.selected a {
+	color: #8F6B54;
 }
 
 .main_div {
-	 clear: both;
-	 background-color: white;
-	 padding: 20px;
+	clear: both;
+	background-color: white;
+	padding: 20px;
 
-	 border-radius: 10px;
+	border-radius: 10px;
 }
 
 h3 {
@@ -57,12 +62,15 @@ table {
 	margin: 20px auto;
 }
 
-table, th, td {
+table,
+th,
+td {
 	/*border: 1px solid black;*/
 	border-collapse: collapse;
 }
 
-table th, table td {
+table th,
+table td {
 	padding: 10px;
 	width: 150px;
 	text-align: center;
@@ -79,18 +87,20 @@ table#status_table th {
 }
 
 table#status_table tr:nth-child(odd) {
-    background-color: ghostwhite;
+	background-color: ghostwhite;
 }
 
 table#status_table tr:nth-child(even) {
-    background-color: #f0f0f0;
+	background-color: #f0f0f0;
 }
 
 footer {
 	color: white;
 }
 
-.login_div, .register_div, .settings_div {
+.login_div,
+.register_div,
+.settings_div {
 	width: auto;
 	height: auto;
 	background-color: white;
@@ -115,31 +125,44 @@ footer {
 	opacity: 0.7;
 }
 
-input, textarea, button {
-    padding: 5px;
-    border: 1px solid grey;
-    font-family: 'Roboto', sans-serif;
+input,
+textarea,
+button {
+	padding: 5px;
+	border: 1px solid grey;
+	font-family: 'Roboto', sans-serif;
 }
 
-#login_form table, #login_form th, #login_form td,
-#register_form table, #register_form th, #register_form td,
-#contact_form table, #contact_form th, #contact_form td {
+#login_form table,
+#login_form th,
+#login_form td,
+#register_form table,
+#register_form th,
+#register_form td,
+#contact_form table,
+#contact_form th,
+#contact_form td {
 	border: 0px solid black;
 }
 
-#login_form th, #login_form td,
-#register_form th, #register_form td,
-#contact_form th, #contact_form td {
+#login_form th,
+#login_form td,
+#register_form th,
+#register_form td,
+#contact_form th,
+#contact_form td {
 	text-align: left;
 	padding: 5px 10px;
 	width: auto;
 }
 
-#login_form, #register_form, #contact_form {
+#login_form,
+#register_form,
+#contact_form {
 	text-align: center;
 }
 
 .required:after {
 	content: " *";
-    color: red;
- }
+	color: red;
+}

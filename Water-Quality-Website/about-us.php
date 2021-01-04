@@ -17,6 +17,7 @@ if (array_key_exists('loginId', $_SESSION)) {
 	<link rel="icon" href="favicon.png">
 	<link rel="stylesheet" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Varela+Round|Khula|Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<style>
       #submit-login {
       display: inline-block;
@@ -69,7 +70,7 @@ if (array_key_exists('loginId', $_SESSION)) {
 	</nav>
 
 	<div ng-app="myApp" class="main_div">
-		<?php if($isLoggedOn) echo "<span style='float:left; font-size:small'>Logged in as ".$_SESSION['loginId']."</span><br>"; ?>
+		<?php if($isLoggedOn) echo "<span style='float:left; font-size:15px; color:blue;font-weight:bold;'>Connecté(e) en tant que ".$_SESSION['loginId']."</span><br>"; ?>
 		<h3>À propos</h3>
 		<p style="padding: 0px 30px;">Le système de surveillance de la qualité de l'eau est un système basé sur arduino pour collecter des données sur la qualité de l'eau en temps réel et afficher les données à l'utilisateur autorisé. Il fait partie du projet de deuxieme année en M2THYP à l'Université Paris8.</p>
 	    <img src="logoParis8" style="width:130px; height:130px; margin-left:300px;">
@@ -78,13 +79,13 @@ if (array_key_exists('loginId', $_SESSION)) {
 		<h3 style="margin-top: 0px">Se connecter</h3>
 		<br>
 		<div class="login_field">
-			<form id="login_form" method="post">
+			<form id="login_form" method="post" action="login.php">
 				<table>
 					<tr><td>login</td><td><input type="text" name="loginId" size="15"/></td></tr>
 					<tr><td>Password</td><td><input type="password" name="loginPassword" size="15"/></td></tr>
 				</table>
-				<input id="submit-login" type="button" value="Se connecter"/><br>
-				<span style="font-size: smaller;"><a id="registerBtn" href="javascript:void(0)">S'inscrire</a></span><br><br>
+				<input  type="submit" class="btn btn-success" value="Se connecter"/><br>
+				<span style="font-size: smaller;"><a id="registerBtn" href="javascript:void(0)" >S'inscrire</a></span><br><br>
 			</form>
 		</div>
 	</div>
@@ -93,23 +94,20 @@ if (array_key_exists('loginId', $_SESSION)) {
 		<h3 style="margin-top: 0px">S'inscrire</h3>
 		<br>
 		<div class="register_field">
-			<span style="font-size: smaller;">Envoyer un mail a l'administrateur</span><br>
-			<form id="register_form" method="post">
-			<!-- <form action="./register_user.php" id="register_form" method="get"> -->
+			<form id="register_form" method="post" action="register_user.php">
 				<table>
 					<tr><td>Nom</td><td class="required"><input type="text" name="fullname" size="30" /></td></tr>
 					<tr><td>Email</td><td class="required"><input type="email" name="email" size="22" /></td></tr>
 					<tr><td>Login</td><td class="required"><input type="text" name="username" size="15" /></td></tr>
-					<tr><td>Password</td><td class="required"><input type="password" name="password" size="15" /></td></tr>
-					<tr><td>Message</td><td><textarea name="message" cols="30" placeholder="message(optional)"></textarea></td></tr>
+					<tr><td>Mot de passe</td><td class="required"><input type="password" name="password" size="15" /></td></tr>
 				</table><br>
-				<input id="submit-login" type="button" value="Envoyer"/>
+				<input type="submit" value="Inscription" class="btn btn-success"/>
 			</form>
 		</div>
 	</div>
 	<div class="black_bg" style="display: none;"></div>
 	<footer style="margin-top:160px;">
-		<p style="text-align: center;">Copyright &copy 2020<br>Water Quality Monitoring System</p>
+		<p style="text-align: center;">Copyright &copy 2021<br>Water Quality Monitoring System Paris8</p>
 	</footer>
 </body>
 </html>

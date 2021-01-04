@@ -1,4 +1,7 @@
 <?php
+include ('./config.php');
+
+
 session_start();
 if (array_key_exists('loginId', $_SESSION)) {
     $con = mysqli_connect('localhost',$username,$password) 
@@ -15,14 +18,18 @@ if (array_key_exists('loginId', $_SESSION)) {
 	$email[] = $result2->fetch_assoc();
 	
 	mysqli_close($con);
-
 	echo json_encode($myArray);
-	if($myArray[0]["temperature"] >= $_SESSION["temp_limit"] && $myArray[0]["turbidity"] >= $_SESSION["turb_limit"] && $myArray[0]["ph"] <= $_SESSION["ph_limit"]) {
-		$message = "Dangerous level:\nTemperature: ".$myArray[0]["temperature"]."\n"
-		."\nTurbidity: ".$myArray[0]["turbidity"]."\n"
-		."\npH: ".$myArray[0]["ph"]."\n\n";
-		mail($email[0]['email'], "Water Quality Warning", $message);
-	}
+
+	// if($myArray[0]["temperature"] >= $_SESSION["temp_limit"] 
+	// && $myArray[0]["turbidity"] >= $_SESSION["turb_limit"] && $myArray[0]["ph"] <= $_SESSION["ph_limit"]) {
+	// 	// $message = "Dangerous level:\nTemperature: ".$myArray[0]["temperature"]."\n"
+	// 	// ."\nTurbidity: ".$myArray[0]["turbidity"]."\n"
+	// 	// ."\npH: ".$myArray[0]["ph"]."\n\n";
+	// 	// mail($email[0]['email'], "Water Quality Warning", $message);
+	// 	echo "<script>
+	// 	     console.log('normalement un message doit etre envoyé');
+	// 	</script>"
+	// }
 
 }
 ?>

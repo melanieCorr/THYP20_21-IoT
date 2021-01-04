@@ -11,7 +11,7 @@ include ('./config.php');
     $dataPoints1 = array();
     $dataPoints2 = array();
     $dataPoints3 = array();
-    $result = mysqli_query($con,"SELECT * FROM reading ORDER BY time LIMIT 12");
+    $result = mysqli_query($con,"SELECT * FROM sensors ORDER BY time LIMIT 12");
     while($row = $result->fetch_assoc()) {
             array_push($dataPoints1, array("label" => $row['time'], "y" => $row['temperature']));
             array_push($dataPoints2, array("label" => $row['time'], "y" => $row['turbidity']));
@@ -31,7 +31,7 @@ window.onload = function () {
 
     var chart = new CanvasJS.Chart("chartContainer", {
         title: {
-            text: "Data Reading"
+            text: "Statistiques: Qualité de l'eau"
         },
         animationEnabled: false,
         axisY: {
@@ -45,13 +45,13 @@ window.onload = function () {
         data: [
         {
             type: "line",
-            name: "Temperature",
+            name: "Température",
             showInLegend: true,
             dataPoints: dps1
         },
         {
             type: "line",
-            name: "Turbidity",
+            name: "Turbidité",
             showInLegend: true,
             dataPoints: dps2
         },

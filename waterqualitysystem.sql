@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 29 nov. 2020 à 21:02
+-- Généré le : lun. 04 jan. 2021 à 16:38
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -35,39 +35,42 @@ CREATE TABLE IF NOT EXISTS `sensors` (
   `turbidity` decimal(5,0) NOT NULL,
   `ph` decimal(5,1) NOT NULL,
   PRIMARY KEY (`idLine`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `sensors`
 --
 
 INSERT INTO `sensors` (`idLine`, `time`, `temperature`, `turbidity`, `ph`) VALUES
-(1, '23:43:36', '42', '45', '7.9'),
-(2, '23:45:04', '10', '20', '1.2');
+(1, '23:43:36', '9', '45', '7.9'),
+(2, '23:45:04', '100', '20', '1.2'),
+(3, '20::25:36', '70', '20', '5.0'),
+(4, '16:30:12', '30', '23', '1.0'),
+(5, '10:12:43', '30', '23', '1.0'),
+(6, '19:30:17', '23', '12', '7.0');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Structure de la table `user`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
   `userid` int(11) NOT NULL AUTO_INCREMENT,
   `fullname` text COLLATE utf8_bin NOT NULL,
   `email` text COLLATE utf8_bin NOT NULL,
-  `login` text COLLATE utf8_bin NOT NULL,
+  `username` text COLLATE utf8_bin NOT NULL,
   `password` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=278 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Déchargement des données de la table `users`
+-- Déchargement des données de la table `user`
 --
 
-INSERT INTO `users` (`userid`, `fullname`, `email`, `login`, `password`) VALUES
-(1, 'Maroua JELLAL', 'marouajellal788@gmail.com', 'admin', '1234'),
-(2, 'Melanie Correia', 'melanie@gmail.com', 'user', '4321');
+INSERT INTO `user` (`userid`, `fullname`, `email`, `username`, `password`) VALUES
+(1, 'marouajellal', 'marouajellal788@gmail.com', 'mjellal', 'mjellal');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

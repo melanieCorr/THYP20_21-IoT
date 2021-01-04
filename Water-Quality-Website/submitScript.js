@@ -20,25 +20,43 @@ $(function(){
 			alert("Please fill in required input");
 	});
 
-	$("#submit-login").click(function() {
-		alert("hi maroua");
+	// $("#submit-login").click(function() {
+
+	// 	$.ajax({
+	// 		type: "post",
+	// 		url: "login.php",
+	// 		data: $("#login_form").serialize(),
+	// 		success: function(response) {
+	// 			if (response === "invalid") {
+	// 				alert("Invalid username/password. Please try again");
+	// 				$("input[name='loginPassword']").val("");
+	// 				console.log(response)
+	// 			}
+	// 			else if (response === "success") {
+	// 				location.reload();
+	// 			}
+	// 			else {
+	// 				alert("Login error. Please try again");
+	// 			}
+    //     	}
+	// 	});
+	// });
+
+	$("#submit-contact-us").click(function() {
+
 		$.ajax({
 			type: "post",
-			url: "login.php",
-			data: $("#login_form").serialize(),
+			url: "submit_contact_us.php",
+			data: $("#contact_form").serialize(),
 			success: function(response) {
-				if (response === "invalid") {
-					alert("Invalid username/password. Please try again");
-					$("input[name='loginPassword']").val("");
-					console.log(response)
-				}
-				else if (response === "success") {
-					location.reload();
-				}
-				else {
-					alert("ERREUR !!!!!");
-				}
-        	}
+				console.log(response)
+				if(response.includes('Email not being sent'))
+					alert("Message is not send. Please check your config");
+				else
+					alert("Message has been sent");
+			}
+		}).done(function() {
+			location.reload();
 		});
 	});
 
@@ -52,7 +70,7 @@ $(function(){
 				console.log(response)
 			}
 		}).done(function() {
-			alert("Settings saved");
+			alert("Les parametres sont bien enregistrés");
 			location.reload();
 		});
 	});

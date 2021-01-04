@@ -1,4 +1,0 @@
-remplacer readins par sensors
-remplacer user par users
-remplacer username par login
-j ai enlever page contact us

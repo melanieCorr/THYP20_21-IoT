@@ -16,7 +16,7 @@ if (array_key_exists('loginId', $_SESSION)) {
 	    }
 	    echo json_encode($myArray);
 	}
-	
+
 	mysqli_close($con);
 }
 ?>

@@ -13,7 +13,7 @@ $(function(){
 			$(".black_bg").show();
 		}
 		else {
-			if(confirm("Are you sure?")) {
+			if(confirm("Etes vous sur?")) {
 				logout();
 				location.reload();
 			}

@@ -20,8 +20,10 @@ if(!isset($_SESSION['loginId'])) {
 			}
 	    }
 	}
-	echo $response;
 	mysqli_close($con);
+	echo "<script type='text/javascript'>
+    window.history.go(-1);
+</script>";
 	
 }
 else {

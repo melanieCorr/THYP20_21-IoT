@@ -19,5 +19,6 @@ if (array_key_exists('loginId', $_SESSION)) {
 		$_SESSION['ph_limit'] = $_POST['ph_limit'];
 	}
 	echo $_SESSION['isWarningEmail'].", ".$_SESSION['temp_limit'].", ".$_SESSION['turb_limit'].", ".$_SESSION['ph_limit'];
+
 }
 ?>
