@@ -25,8 +25,9 @@ void setup() {
 }
 
 void loop() {
-  temperatureLoop(); 
   Serial.println();
+  temperatureLoop();
+  Serial.print(" ");  
   tdsLoop(); 
 }
 
@@ -83,10 +84,10 @@ void temperatureLoop() {
     return;
   }
 
-  Serial.print(F("Temperature : "));
+  //Serial.print(F("Temperature : "));
   Serial.print(temp, 2);
-  Serial.write('C');
-  delay(6000); 
+  //Serial.write('C');
+  //delay(6000); 
 }
 
 /******************** TDS Sensor ********************************/
@@ -113,26 +114,23 @@ int getMedianNum(int tdsArray[], int iFilterLen) {
 
 void tdsLoop() {
   static unsigned long analogSampleTimepoint = millis();
-  if(millis()-analogSampleTimepoint > 40U) {    //Chaque 40 milliseconds, lire la valeur du capteur
-   analogSampleTimepoint = millis();
-   analogBuffer[analogBufferIndex] = analogRead(TdsSensorPin);    // Lire la valeur du capteur et la stocker dans le buffer
-   analogBufferIndex++;
-   if(analogBufferIndex == SCOUNT) analogBufferIndex = 0;
-  }   
+  analogSampleTimepoint = millis();
+  analogBuffer[analogBufferIndex] = analogRead(TdsSensorPin);    // Lire la valeur du capteur et la stocker dans le buffer
+  analogBufferIndex++;
+  if(analogBufferIndex == SCOUNT) analogBufferIndex = 0;  
   
   static unsigned long printTimepoint = millis();
-  if(millis()-printTimepoint > 800U) {
-    printTimepoint = millis();
+  printTimepoint = millis();
     
-    for(copyIndex=0;copyIndex<SCOUNT;copyIndex++) analogBufferTemp[copyIndex]= analogBuffer[copyIndex];
+  for(copyIndex=0;copyIndex<SCOUNT;copyIndex++) analogBufferTemp[copyIndex]= analogBuffer[copyIndex];
     
-    averageVoltage = getMedianNum(analogBufferTemp,SCOUNT) * (float)VOLTAGE / 1024.0; // Lecture la valeur du capteur et convertion en voltage
-    float compensationCoefficient = 1.0 + 0.02 *(temperature - 25.0);    // formule de compensation de la température: fFinalResult(25^C) = fFinalResult(current)/(1.0+0.02*(fTP-25.0));
-    float compensationVolatge = averageVoltage / compensationCoefficient;  // Compensation de la température
-    tdsValue = (133.42 * compensationVolatge * compensationVolatge * compensationVolatge - 255.86 * compensationVolatge * compensationVolatge + 857.39 * compensationVolatge) * 0.5; // Convertion du voltage en valeur TDS
+  averageVoltage = getMedianNum(analogBufferTemp,SCOUNT) * (float)VOLTAGE / 1024.0; // Lecture la valeur du capteur et convertion en voltage
+  float compensationCoefficient = 1.0 + 0.02 *(temperature - 25.0);    // formule de compensation de la température: fFinalResult(25^C) = fFinalResult(current)/(1.0+0.02*(fTP-25.0));
+  float compensationVolatge = averageVoltage / compensationCoefficient;  // Compensation de la température
+  tdsValue = (133.42 * compensationVolatge * compensationVolatge * compensationVolatge - 255.86 * compensationVolatge * compensationVolatge + 857.39 * compensationVolatge) * 0.5; // Convertion du voltage en valeur TDS
   
-    Serial.print("TDS Value:");
-    Serial.print(tdsValue, 0);
-    Serial.println("ppm");
-  }
+  //Serial.print("TDS Value:");
+  Serial.print(tdsValue, 2);
+  //Serial.println("ppm");
+
 }
