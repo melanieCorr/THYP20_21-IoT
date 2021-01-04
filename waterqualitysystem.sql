@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 04 jan. 2021 à 16:38
+-- Généré le : lun. 04 jan. 2021 à 17:24
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -32,8 +32,7 @@ CREATE TABLE IF NOT EXISTS `sensors` (
   `idLine` int(11) NOT NULL AUTO_INCREMENT,
   `time` text COLLATE utf8_bin NOT NULL,
   `temperature` decimal(5,0) NOT NULL,
-  `turbidity` decimal(5,0) NOT NULL,
-  `ph` decimal(5,1) NOT NULL,
+  `tds` int(10) NOT NULL,
   PRIMARY KEY (`idLine`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -41,13 +40,13 @@ CREATE TABLE IF NOT EXISTS `sensors` (
 -- Déchargement des données de la table `sensors`
 --
 
-INSERT INTO `sensors` (`idLine`, `time`, `temperature`, `turbidity`, `ph`) VALUES
-(1, '23:43:36', '9', '45', '7.9'),
-(2, '23:45:04', '100', '20', '1.2'),
-(3, '20::25:36', '70', '20', '5.0'),
-(4, '16:30:12', '30', '23', '1.0'),
-(5, '10:12:43', '30', '23', '1.0'),
-(6, '19:30:17', '23', '12', '7.0');
+INSERT INTO `sensors` (`idLine`, `time`, `temperature`, `tds`) VALUES
+(1, '23:43:36', '9', 24),
+(2, '23:45:04', '100', 45),
+(3, '20::25:36', '70', 45),
+(4, '16:30:12', '30', 34),
+(5, '10:12:43', '30', 12),
+(6, '19:30:17', '23', 15);
 
 -- --------------------------------------------------------
 

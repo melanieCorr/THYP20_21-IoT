@@ -38,8 +38,8 @@ if (!array_key_exists('isWarningEmail', $_SESSION)) {
 		<?php if($isLoggedOn) echo "<span style='float:left; font-size:15px; color:blue;font-weight:bold;'>Connecté(e) en tant que ".$_SESSION['loginId']."</span><br>"; ?>
 		<h3>État de la qualité de l'eau</h3>
 		<?php if($isLoggedOn) echo '<table id="average"><tr><td>Température moyenne:</td><td style="color:blue;font-weight:bold;">{{average[0].temperature}}</td></tr>'
-			.'<tr><td>Turbidité moyenne:</td><td style="color:blue;font-weight:bold;">{{average[0].turbidity}}</td></tr>'
-			.'<tr><td>pH Moyen:</td><td style="color:blue;font-weight:bold;">{{average[0].ph}}</td></tr></table>'
+			.'<tr><td>Turbidité moyenne:</td><td style="color:blue;font-weight:bold;">{{average[0].tds}}</td></tr>'
+			.'</table>'
 			.'<div style="text-align:  center;">
 				   <input id="settingsBtn" type="button" class="btn btn-success" value="Paramètres"/>
 				    <button class="btn btn-warning"><a href="charts.php" target="_blank" style="text-decoration:none;color:black">Statistiques</a></button></div>'
@@ -47,14 +47,12 @@ if (!array_key_exists('isWarningEmail', $_SESSION)) {
 			.'<tr>
 			    <th>Heure</th>
 			    <th>Température (&#176C)</th>
-			    <th>Turbidité (%)</th>
-			    <th>pH Valeur</th>
+			    <th>TDS</th>
 				</tr>
 			<tr ng-repeat="x in reading">
 			    <td>{{x.time}}</td>
 			    <td>{{x.temperature}}</td>
-			    <td>{{x.turbidity}}</td>
-			    <td>{{x.ph}}</td>
+			    <td>{{x.tds}}</td>
 		  	</tr>
 		</table>';
 		else echo "<h4 style='text-align: center'>** Veuillez-vous connecter pour visualiser les données **</h4>";
@@ -100,8 +98,7 @@ if (!array_key_exists('isWarningEmail', $_SESSION)) {
 				<input type="checkbox" name="sendEmailCB" <?php if($_SESSION['isWarningEmail']=="true") echo "checked";?> value="yes"/> Envoyez-moi des e-mails d'avertissement<br><br>
 				Définir les valeurs d'avertissement des données:<br>
 				<label style="width:80px;display: inline-block;" >Température:</label><input type="number" name="temp_limit" placeholder="Température" min=0 <?php if(array_key_exists('temp_limit', $_SESSION)) echo "value=".$_SESSION['temp_limit'];?> style="width: 90px; text-align: center;" /><br>
-				<label style="width:80px;display: inline-block;">Turpidité:</label><input type="number" name="turb_limit" placeholder="Turbidité" min=0 <?php if(array_key_exists('turb_limit', $_SESSION)) echo "value=".$_SESSION['turb_limit'];?> style="width: 90px; text-align: center;" /><br>
-				<label style="width:80px;display: inline-block;">pH:</label><input type="number" name="ph_limit" placeholder="pH" min=0 <?php if(array_key_exists('ph_limit', $_SESSION)) echo "value=".$_SESSION['ph_limit'];?> style="width: 90px; text-align: center;" /><br>
+				<label style="width:80px;display: inline-block;">TDS:</label><input type="number" name="tds_limit" placeholder="TDS" min=0 <?php if(array_key_exists('tds_limit', $_SESSION)) echo "value=".$_SESSION['tds_limit'];?> style="width: 90px; text-align: center;" /><br>
 				<span style="font-size: x-small;"><i>* 
                                    Laisser vide pour annuler les valeurs</i></span><br><br>
 				<input id="submit-settings" type="button" value="Enregistrer" class="btn btn-success"/>

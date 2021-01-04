@@ -14,8 +14,8 @@ include ('./config.php');
     $result = mysqli_query($con,"SELECT * FROM sensors ORDER BY time LIMIT 12");
     while($row = $result->fetch_assoc()) {
             array_push($dataPoints1, array("label" => $row['time'], "y" => $row['temperature']));
-            array_push($dataPoints2, array("label" => $row['time'], "y" => $row['turbidity']));
-            array_push($dataPoints3, array("label" => $row['time'], "y" => $row['ph']));
+            array_push($dataPoints2, array("label" => $row['time'], "y" => $row['tds']));
+
     }
 // }
 ?>
@@ -51,15 +51,9 @@ window.onload = function () {
         },
         {
             type: "line",
-            name: "Turbidité",
+            name: "TDS",
             showInLegend: true,
             dataPoints: dps2
-        },
-        {
-            type: "line",
-            name: "pH",
-            showInLegend: true,
-            dataPoints: dps3
         }
         ],
         legend: {
